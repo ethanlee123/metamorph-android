@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mid_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4"/>
+
+<!--    Titles-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Jul 20, 2022 - 12:06"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_date"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paid:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_time"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_earn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Earn:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_paid"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="@id/mid_guideline"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="@id/mid_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_status"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="@id/mid_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_from"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_trn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TRN:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="@id/mid_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_order"/>
+
+<!--    Values-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_time"
+        app:layout_constraintTop_toBottomOf="@id/tv_date"
+        tools:text="time value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_paid"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_time"
+        tools:text="paid value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_earn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_earn"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_paid"
+        tools:text="earn value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_status"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_from"
+        tools:text="status value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_from"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_status"
+        tools:text="from value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_order"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_from"
+        tools:text="order value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_trn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_trn"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_order"
+        tools:text="trn value"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

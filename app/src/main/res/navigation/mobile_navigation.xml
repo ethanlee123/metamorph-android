@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_inbox"
         android:name="com.example.metamorph.ui.inbox.InboxFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_inbox"
         tools:layout="@layout/fragment_inbox" />
 
     <fragment
@@ -22,9 +22,11 @@
         android:name="com.example.metamorph.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.metamorph.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+
 </navigation>

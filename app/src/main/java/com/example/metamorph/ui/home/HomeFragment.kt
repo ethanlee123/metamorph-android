@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.metamorph.databinding.FragmentHomeBinding
+import com.example.metamorph.ui.home.adapter.JobsAdapter
+import com.example.metamorph.ui.home.model.JobDetailModel
 
 class HomeFragment : Fragment() {
 
@@ -28,15 +31,31 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        val rvJobs = binding.rvJobs
+        setupRecyclerViewJobs(rvJobs)
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupRecyclerViewJobs(recyclerView: RecyclerView) {
+        val mockData = arrayOf(
+            JobDetailModel(
+                date = "testing",
+                time = "testing",
+                paid = "testing",
+                earn = "testing",
+                status = "testing",
+                from = "testing",
+                order = "testing",
+                trn = "testing")
+        )
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = JobsAdapter(mockData)
     }
 }

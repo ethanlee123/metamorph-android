@@ -28,7 +28,7 @@ class InboxFragment : Fragment() {
         _binding = FragmentInboxBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
+        val textView: TextView = binding.textInbox
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
