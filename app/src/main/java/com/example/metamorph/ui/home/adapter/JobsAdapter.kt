@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.metamorph.R
 import com.example.metamorph.ui.home.model.WebOrderResponse
 
-class JobsAdapter(private val jobDetailsDataSet: Array<WebOrderResponse>) :
+
+class JobsAdapter(private val jobDetailsDataSet: List<WebOrderResponse>) :
     RecyclerView.Adapter<JobsAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -45,17 +46,16 @@ class JobsAdapter(private val jobDetailsDataSet: Array<WebOrderResponse>) :
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.date.text = jobDetailsDataSet[position].date
-        viewHolder.time.text = jobDetailsDataSet[position].time
-        viewHolder.paid.text = jobDetailsDataSet[position].paid
-        viewHolder.earn.text = jobDetailsDataSet[position].earn
-        viewHolder.status.text = jobDetailsDataSet[position].status
-        viewHolder.from.text = jobDetailsDataSet[position].from
-        viewHolder.order.text = jobDetailsDataSet[position].order
-        viewHolder.trn.text = jobDetailsDataSet[position].trn
+        viewHolder.date.text = jobDetailsDataSet[position].OrderDate
+        viewHolder.time.text = jobDetailsDataSet[position].DeliveryPlan
+        viewHolder.paid.text = jobDetailsDataSet[position].PaymentAmount.toString()
+        viewHolder.earn.text = jobDetailsDataSet[position].TranslatorFee.toString()
+        viewHolder.status.text = jobDetailsDataSet[position].OrderStatusName
+        viewHolder.from.text = jobDetailsDataSet[position].WebOrderTitle
+        viewHolder.order.text = jobDetailsDataSet[position].OrderNo
+        viewHolder.trn.text = jobDetailsDataSet[position].TranslatorNo.toString()
     }
 
     // Return the size of your dataset (invoked by the layout manager)

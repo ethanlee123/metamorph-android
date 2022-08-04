@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +18,8 @@ import com.example.metamorph.ui.home.viewmodel.HomeViewModel
 import com.example.metamorph.ui.home.viewmodel.HomeViewModelFactory
 
 class HomeFragment : Fragment() {
-
+    // Number of web orders to query
+    val DEFAULT_PAGE_SIZE = "10"
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -32,20 +31,12 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // make call to VM to retrieve jobs
-        val webOrderParams = WebOrderParams()
+        val webOrderParams = WebOrderParams(pageSize = DEFAULT_PAGE_SIZE)
 
         val homeViewModelFactory = HomeViewModelFactory(repository)
         homeViewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
 
-        homeViewModel.getJobDetails(webOrderParams)
-        homeViewModel.webOrderResponse.observe(this) { response ->
-//            if (response.isSuccessful){
-            Log.i("resp: ", response.toString())
-//            } else {
-//                Log.i("resp: ", response.toString())
-//            }
-
-        }
+        homeViewModel.getWebOrders(webOrderParams)
     }
 
     override fun onCreateView(
@@ -53,15 +44,20 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val homeViewModel =
-//            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val rvJobs = binding.rvJobs
         setupRecyclerViewJobs(rvJobs)
+        homeViewModel.webOrderResponse.observe(viewLifecycleOwner) { response ->
+            setupRecyclerViewAdapter(response)
+//            homeViewModel.getOrderDetailsById()
+        }
 
+//        homeViewModel.getOrderDetailsById("220804O002")
+//        homeViewModel.listOfOrderDetailsById.observe(this) { response ->
+//                Log.i("resp: ", response.toString())
+//        }
         return root
     }
 
@@ -71,28 +67,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerViewJobs(recyclerView: RecyclerView) {
-        val mockData = arrayOf(
-            WebOrderResponse(
-                date = "testing",
-                time = "testing",
-                paid = "testing",
-                earn = "testing",
-                status = "testing",
-                from = "testing",
-                order = "testing",
-                trn = "testing"),
-            WebOrderResponse(
-                date = "testing",
-                time = "testing",
-                paid = "testing",
-                earn = "testing",
-                status = "testing",
-                from = "testing",
-                order = "testing",
-                trn = "testing")
-        )
-
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = JobsAdapter(mockData)
+    }
+    private fun setupRecyclerViewAdapter(webOrderData: List<WebOrderResponse>) {
+        val rvJobs = binding.rvJobs
+        rvJobs.adapter = JobsAdapter(webOrderData)
+
     }
 }
