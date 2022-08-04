@@ -28,6 +28,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs = ['-Xjvm-default=enable']
     }
     buildFeatures {
         viewBinding true
@@ -50,6 +51,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     // Coroutine dependency
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    // Moshi dependency to deserialize JSON object
+    implementation 'com.squareup.moshi:moshi-kotlin:1.12.0'
+    implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
+
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 
     testImplementation 'junit:junit:4.13.2'
 

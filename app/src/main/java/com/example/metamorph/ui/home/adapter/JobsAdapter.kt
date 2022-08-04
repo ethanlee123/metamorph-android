@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.metamorph.R
-import com.example.metamorph.ui.home.model.JobDetailModel
+import com.example.metamorph.ui.home.model.WebOrderResponse
 
-class JobsAdapter(private val jobDetailsDataSet: Array<JobDetailModel>) :
+class JobsAdapter(private val jobDetailsDataSet: Array<WebOrderResponse>) :
     RecyclerView.Adapter<JobsAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

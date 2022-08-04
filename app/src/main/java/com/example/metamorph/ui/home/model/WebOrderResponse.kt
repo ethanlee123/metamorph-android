@@ -1,6 +1,6 @@
 package com.example.metamorph.ui.home.model
 
-data class JobDetailModel(
+data class WebOrderResponse(
     var date: String = "",
     var time: String = "",
     var paid: String = "",
