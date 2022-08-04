@@ -6,5 +6,7 @@
     <string name="title_profile">Profile</string>
 
     <string name="yen_symbol">&#165;</string>
+    <string name="paid">&#165;%s</string>
+    <string name="earn">&#165;%s</string>
 </resources>
 

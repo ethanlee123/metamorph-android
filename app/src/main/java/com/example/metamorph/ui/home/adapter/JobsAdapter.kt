@@ -1,5 +1,6 @@
 package com.example.metamorph.ui.home.adapter
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,10 @@ class JobsAdapter(private val jobDetailsDataSet: List<WebOrderResponse>) :
             from = view.findViewById(R.id.tv_from)
             order = view.findViewById(R.id.tv_order)
             trn = view.findViewById(R.id.tv_trn)
+
+            view.setOnClickListener {
+
+            }
         }
     }
 
@@ -47,16 +52,18 @@ class JobsAdapter(private val jobDetailsDataSet: List<WebOrderResponse>) :
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        val resources = viewHolder.itemView.resources
+        val jobItem = jobDetailsDataSet[position]
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.date.text = formatDateTime(jobDetailsDataSet[position].OrderDate)
-        viewHolder.time.text = jobDetailsDataSet[position].DeliveryPlan
-        viewHolder.paid.text = jobDetailsDataSet[position].PaymentAmount.toString()
-        viewHolder.earn.text = jobDetailsDataSet[position].TranslatorFee.toString()
-        viewHolder.status.text = jobDetailsDataSet[position].OrderStatusName
-        viewHolder.from.text = jobDetailsDataSet[position].WebOrderTitle
-        viewHolder.order.text = jobDetailsDataSet[position].OrderNo
-        viewHolder.trn.text = jobDetailsDataSet[position].TranslatorNo.toString()
+        viewHolder.time.text = jobItem.DeliveryPlan
+        viewHolder.paid.text = resources.getString(R.string.paid, jobItem.PaymentAmount.toString())
+        viewHolder.earn.text = resources.getString(R.string.paid, jobItem.TranslatorFee.toString())
+        viewHolder.status.text = jobItem.OrderStatusName
+        viewHolder.from.text = jobItem.WebOrderTitle
+        viewHolder.order.text = jobItem.OrderNo
+        viewHolder.trn.text = jobItem.TranslatorNo.toString()
     }
 
     // Return the size of your dataset (invoked by the layout manager)
