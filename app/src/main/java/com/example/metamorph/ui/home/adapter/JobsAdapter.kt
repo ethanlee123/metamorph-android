@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.metamorph.R
 import com.example.metamorph.ui.home.model.WebOrderResponse
+import com.example.metamorph.util.formatDateTime
 
 
 class JobsAdapter(private val jobDetailsDataSet: List<WebOrderResponse>) :
@@ -48,7 +49,7 @@ class JobsAdapter(private val jobDetailsDataSet: List<WebOrderResponse>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.date.text = jobDetailsDataSet[position].OrderDate
+        viewHolder.date.text = formatDateTime(jobDetailsDataSet[position].OrderDate)
         viewHolder.time.text = jobDetailsDataSet[position].DeliveryPlan
         viewHolder.paid.text = jobDetailsDataSet[position].PaymentAmount.toString()
         viewHolder.earn.text = jobDetailsDataSet[position].TranslatorFee.toString()
