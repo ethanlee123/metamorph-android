@@ -15,7 +15,7 @@ import com.example.metamorph.ui.orderdetails.viewmodel.OrderDetailsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class OrderDetailsBottomSheetFragment: BottomSheetDialogFragment() {
+class OrderDetailsBottomSheetFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentOrderDetailsBottomSheetBinding? = null
     private val binding get() = _binding!!
 
@@ -66,17 +66,24 @@ class OrderDetailsBottomSheetFragment: BottomSheetDialogFragment() {
         binding.tvTargetLang.text = concatString(R.string.target_language, data.TargetLanguage)
 
 //        Comments/menuscript
-        binding.tvComments.text = concatString(R.string.comment_to_translator, data.CommentToTranslator)
+        binding.tvComments.text =
+            concatString(R.string.comment_to_translator, data.CommentToTranslator)
         binding.tvMenuScript.text = concatString(R.string.menu_script, data.MenuScript)
-        binding.tvDeliveryComment.text = concatString(R.string.delivery_comment, data.DeliveryComment)
+        binding.tvDeliveryComment.text =
+            concatString(R.string.delivery_comment, data.DeliveryComment)
 
         binding.tvMenuScript.text = concatString(R.string.menu_script, data.MenuScript)
 
 //        payment details
+        binding.tvPaymentDate.text = concatString(R.string.payment_date, data.PaymentDate)
+        binding.tvPaymentAmount.text =
+            concatString(R.string.payment_amount, data.PaymentAmount.toString())
+        binding.tvTranslatorFee.text =
+            concatString(R.string.translator_fee, data.TranslatorFee.toString())
     }
 
-    private fun concatString(stringId: Int, secondString: String): String{
-        return "${resources.getString(stringId)}: ${secondString}"
+    private fun concatString(stringId: Int, secondString: String): String {
+        return "${resources.getString(stringId)}: $secondString"
     }
 
     private fun getOrderDetails() {
