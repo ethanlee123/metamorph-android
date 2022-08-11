@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.metamorph.R
 import com.example.metamorph.databinding.FragmentOrderDetailsBottomSheetBinding
+import com.example.metamorph.model.OrderDetailsByIdParams
 import com.example.metamorph.model.OrderDetailsByIdResponse
 import com.example.metamorph.ui.orderdetails.viewmodel.OrderDetailsViewModelFactory
 import com.example.metamorph.ui.orderdetails.repository.OrderDetailsRepository
 import com.example.metamorph.ui.orderdetails.viewmodel.OrderDetailsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+
 
 class OrderDetailsBottomSheetFragment: BottomSheetDialogFragment() {
     private var _binding: FragmentOrderDetailsBottomSheetBinding? = null
@@ -35,13 +37,13 @@ class OrderDetailsBottomSheetFragment: BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding =
             FragmentOrderDetailsBottomSheetBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         orderDetailsViewModel.orderDetails.observe(this) {
-//            setupTextViews(it)
+            setupTextViews(it)
         }
 
         return root
@@ -78,9 +80,10 @@ class OrderDetailsBottomSheetFragment: BottomSheetDialogFragment() {
     }
 
     private fun getOrderDetails() {
-        val orderNo = arguments?.getString(ARG_ORDER_NO)
-        if (orderNo != null) {
-            orderDetailsViewModel.getOrderDetailsById(orderNo)
+        val orderNumber = arguments?.getString(ARG_ORDER_NO)
+        if (orderNumber != null) {
+            val orderDetailsByIdParams = OrderDetailsByIdParams(orderNo = orderNumber)
+            orderDetailsViewModel.getOrderDetailsById(orderDetailsByIdParams)
         }
     }
 

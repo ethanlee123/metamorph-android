@@ -91,7 +91,7 @@ data class OrderDetailsByIdResponse(
     val TranslationTypeName: String,
     val TranslatorFee: Double,
     val TranslatorName: String,
-    val TranslatorNo: Int,
+    val TranslatorNo: Long,
     val UnitPrice: Double,
     val WebDocumentList: List<WebDocument>,
     val WebOrderTitle: String,

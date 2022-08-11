@@ -1,5 +1,6 @@
 package com.example.metamorph.ui.home.network
 
+import com.example.metamorph.model.OrderDetailsByIdParams
 import com.example.metamorph.model.OrderDetailsByIdResponse
 import com.example.metamorph.model.WebOrderParams
 import com.example.metamorph.model.WebOrderResponse
@@ -20,7 +21,7 @@ interface ITransProApi {
     @Headers("Accept: application/json;charset=UTF-8")
     @POST("order/getOrderDetailsById")
     suspend fun getOrderDetailsById(
-        @Body orderNo: String
+        @Body orderDetailsByIdParams: OrderDetailsByIdParams
     ): Response<OrderDetailsByIdResponse>
 
     @POST("translator/login")
