@@ -42,11 +42,19 @@ class OrderDetailsBottomSheetFragment : BottomSheetDialogFragment() {
             FragmentOrderDetailsBottomSheetBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        setupToolbar()
+
         orderDetailsViewModel.orderDetails.observe(this) {
             setupTextViews(it)
         }
 
         return root
+    }
+
+    private fun setupToolbar() {
+        binding.materialToolbar.setNavigationOnClickListener {
+            dismiss()
+        }
     }
 
     private fun setupTextViews(data: OrderDetailsByIdResponse) {
