@@ -1,7 +1,6 @@
 package com.example.metamorph.ui.home.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,19 +10,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.metamorph.databinding.FragmentHomeBinding
 import com.example.metamorph.ui.home.adapter.JobsAdapter
-import com.example.metamorph.ui.home.model.WebOrderParams
-import com.example.metamorph.ui.home.model.WebOrderResponse
+import com.example.metamorph.model.WebOrderParams
+import com.example.metamorph.model.WebOrderResponse
 import com.example.metamorph.ui.home.repository.HomeRepository
 import com.example.metamorph.ui.home.viewmodel.HomeViewModel
 import com.example.metamorph.ui.home.viewmodel.HomeViewModelFactory
+import com.example.metamorph.ui.orderdetails.OrderDetailsBottomSheetFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
     // Number of web orders to query
-    val DEFAULT_PAGE_SIZE = "10"
+    private val DEFAULT_PAGE_SIZE = "10"
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private val repository = HomeRepository()
     private lateinit var homeViewModel: HomeViewModel
@@ -51,13 +49,8 @@ class HomeFragment : Fragment() {
         setupRecyclerViewJobs(rvJobs)
         homeViewModel.webOrderResponse.observe(viewLifecycleOwner) { response ->
             setupRecyclerViewAdapter(response)
-//            homeViewModel.getOrderDetailsById()
         }
 
-//        homeViewModel.getOrderDetailsById("220804O002")
-//        homeViewModel.listOfOrderDetailsById.observe(this) { response ->
-//                Log.i("resp: ", response.toString())
-//        }
         return root
     }
 
@@ -71,7 +64,19 @@ class HomeFragment : Fragment() {
     }
     private fun setupRecyclerViewAdapter(webOrderData: List<WebOrderResponse>) {
         val rvJobs = binding.rvJobs
-        rvJobs.adapter = JobsAdapter(webOrderData)
+        rvJobs.adapter = JobsAdapter(webOrderData, this)
+    }
 
+    override fun setOnClickListener(orderNo: String) {
+        val bottomSheet = OrderDetailsBottomSheetFragment().apply {
+            val bundle = Bundle()
+            bundle.putString(OrderDetailsBottomSheetFragment.ARG_ORDER_NO, orderNo)
+            arguments = bundle
+        }
+
+        bottomSheet.show(
+            requireActivity().supportFragmentManager,
+            OrderDetailsBottomSheetFragment.TAG
+        )
     }
 }

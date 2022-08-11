@@ -9,8 +9,9 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3946130825138948" />
         <entry key="app/src/main/res/layout/fragment_inbox.xml" value="0.2660924750679964" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.41041666666666665" />
+        <entry key="app/src/main/res/layout/fragment_order_details_bottom_sheet.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.41041666666666665" />
-        <entry key="app/src/main/res/layout/job_info_row_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/job_info_row_item.xml" value="0.375" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.41041666666666665" />
       </map>
     </option>

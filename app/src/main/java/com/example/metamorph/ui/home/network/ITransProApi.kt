@@ -1,8 +1,8 @@
 package com.example.metamorph.ui.home.network
 
-import com.example.metamorph.ui.home.model.OrderDetailsByIdResponse
-import com.example.metamorph.ui.home.model.WebOrderParams
-import com.example.metamorph.ui.home.model.WebOrderResponse
+import com.example.metamorph.model.OrderDetailsByIdResponse
+import com.example.metamorph.model.WebOrderParams
+import com.example.metamorph.model.WebOrderResponse
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response

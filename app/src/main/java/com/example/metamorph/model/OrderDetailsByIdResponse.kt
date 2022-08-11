@@ -1,4 +1,4 @@
-package com.example.metamorph.ui.home.model
+package com.example.metamorph.model
 
 data class OrderDetailsByIdResponse(
     val ApplicationId: Int,

@@ -5,6 +5,44 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
 
+    <string name="title_order_details">Order details</string>
+
+    <string name="translation_details">Translation details</string>
+    <string name="translator_name">name</string>
+    <string name="translator_no">No</string>
+    <string name="source_language">Source Lang</string>
+    <string name="target_language">Target Lan</string>
+    <string name="translation_field_name">Field_name</string>
+    <string name="comment_to_translator">Comments for me</string>
+    <string name="menu_script">Menu script</string>
+    <string name="delivery_comment">Delivery comment</string>
+
+    <string name="order_id">OrderID</string>
+    <string name="order_no">Order no</string>
+    <string name="order_date">Order date</string>
+    <string name="order_status">Order status</string>
+
+    <string name="delivery_date">Delivery date</string>
+    <string name="start_date">Start date</string>
+    <string name="end_date">End date</string>
+    <string name="payment_date">Payment date</string>
+    <string name="delivery_level">Delivery level</string>
+    <string name="delivery_plan">Delivery plan</string>
+
+    <string name="payment_and_fees">Payment and fees</string>
+    <string name="payment_status">Payment status</string>
+    <string name="payment_amount">Payment amount</string>
+    <string name="translator_fee">Translator fee</string>
+    <string name="estimated_price">Estimated price</string>
+    <string name="unit_price">Unit price</string>
+    <string name="discounted_price">Discounted price</string>
+    <string name="consumption_tax">Consumption tax</string>
+
+    <string name="more_info">More information</string>
+    <string name="translation_type">Translation type</string>
+    <string name="characters">Characters</string>
+    <string name="words">Words</string>
+
     <string name="yen_symbol">&#165;</string>
     <string name="paid">&#165;%s</string>
     <string name="earn">&#165;%s</string>

@@ -1,20 +1,24 @@
 package com.example.metamorph.ui.home.adapter
 
-import android.content.res.Resources
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.metamorph.R
-import com.example.metamorph.ui.home.model.WebOrderResponse
+import com.example.metamorph.model.WebOrderResponse
 import com.example.metamorph.util.formatDateTime
 
 
-class JobsAdapter(private val jobDetailsDataSet: List<WebOrderResponse>) :
-    RecyclerView.Adapter<JobsAdapter.ViewHolder>() {
+class JobsAdapter(
+    private val jobDetailsDataSet: List<WebOrderResponse>,
+    private val onJobItemRowClick: IJobRowItemOnClick
+) : RecyclerView.Adapter<JobsAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val orderNo = jobDetailsDataSet
+
+    class ViewHolder(view: View, clickAtPosition: (Int) -> Unit) : RecyclerView.ViewHolder(view) {
         val date: TextView
         val time: TextView
         val paid: TextView
@@ -35,8 +39,8 @@ class JobsAdapter(private val jobDetailsDataSet: List<WebOrderResponse>) :
             order = view.findViewById(R.id.tv_order)
             trn = view.findViewById(R.id.tv_trn)
 
-            view.setOnClickListener {
-
+            itemView.setOnClickListener {
+                clickAtPosition(adapterPosition)
             }
         }
     }
@@ -46,8 +50,11 @@ class JobsAdapter(private val jobDetailsDataSet: List<WebOrderResponse>) :
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.job_info_row_item, viewGroup, false)
+        val viewHolder = ViewHolder(view) {
+            onJobItemRowClick.setOnClickListener(jobDetailsDataSet[it].OrderNo)
+        }
 
-        return ViewHolder(view)
+        return viewHolder
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -68,4 +75,8 @@ class JobsAdapter(private val jobDetailsDataSet: List<WebOrderResponse>) :
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = jobDetailsDataSet.size
+
+    interface IJobRowItemOnClick {
+        fun setOnClickListener(orderNo: String)
+    }
 }
