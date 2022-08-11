@@ -19,12 +19,14 @@ import com.example.metamorph.ui.orderdetails.OrderDetailsBottomSheetFragment
 
 class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
     // Number of web orders to query
-    private val DEFAULT_PAGE_SIZE = "10"
+    private val DEFAULT_PAGE_SIZE = "15"
     private var _binding: FragmentHomeBinding? = null
 
     private val binding get() = _binding!!
     private val repository = HomeRepository()
     private lateinit var homeViewModel: HomeViewModel
+
+    lateinit var adapter: JobsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +49,10 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
 
         val rvJobs = binding.rvJobs
         setupRecyclerViewJobs(rvJobs)
+        setupRecyclerViewAdapter(listOf())
+
         homeViewModel.webOrderResponse.observe(viewLifecycleOwner) { response ->
-            setupRecyclerViewAdapter(response)
+            adapter.updateList(response)
         }
 
         return root
@@ -64,7 +68,8 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
     }
     private fun setupRecyclerViewAdapter(webOrderData: List<WebOrderResponse>) {
         val rvJobs = binding.rvJobs
-        rvJobs.adapter = JobsAdapter(webOrderData, this)
+        adapter = JobsAdapter(webOrderData, this)
+        rvJobs.adapter = adapter
     }
 
     override fun setOnClickListener(orderNo: String) {

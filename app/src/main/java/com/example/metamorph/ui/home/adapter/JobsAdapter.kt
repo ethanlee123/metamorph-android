@@ -12,7 +12,7 @@ import com.example.metamorph.util.formatDateTime
 
 
 class JobsAdapter(
-    private val jobDetailsDataSet: List<WebOrderResponse>,
+    private var jobDetailsDataSet: List<WebOrderResponse>,
     private val onJobItemRowClick: IJobRowItemOnClick
 ) : RecyclerView.Adapter<JobsAdapter.ViewHolder>() {
 
@@ -75,6 +75,14 @@ class JobsAdapter(
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = jobDetailsDataSet.size
+
+    fun updateList(response: List<WebOrderResponse>?) {
+        if (response != null) {
+            jobDetailsDataSet = response
+        }
+        notifyDataSetChanged()
+
+    }
 
     interface IJobRowItemOnClick {
         fun setOnClickListener(orderNo: String)
