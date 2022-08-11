@@ -1,9 +1,14 @@
 package com.example.metamorph.util
 
 import android.util.Log
+import java.text.DateFormatSymbols
+import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
+import java.util.*
 
 /**
  * @param date pattern can be yyyy-MM-dd'T'HH:mm:ss.SSS'Z or yyyy-MM-dd'T'HH:mm:ss.S'Z
@@ -19,26 +24,30 @@ fun formatDateTime(date: String): String {
         val year = formattedDate.format(DateTimeFormatter.ofPattern("yyyy"))
         return "$month $day, $year"
     } catch (e: DateTimeParseException) {
-        formatDateTimeBackup(date)
+        e.message?.let { Log.e("Format exception", it) }
     }
-    return date
+    return formatDateTimeBackup(date)
 }
 
 /**
- * @param date pattern must be yyyy-MM-dd'T'HH:mm:ss.S'Z or DateTimeParseException is thrown
- * @throws DateTimeParseException
+ * Hacky solution b/c response is returning an unsupported date pattern.
+ * @param date pattern is yyyy-MM-dd'T'HH:mm:ss.S'Z'
+ * @throws NumberFormatException if it cannot cast string integer to integer
  */
 fun formatDateTimeBackup(date: String): String {
+    var year: String? = null
+    var monthNumerical: Int? = null
+    var day: String? = null
     try {
-        var formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.S'Z'")
-        val formattedDate = LocalDate.parse(date, formatter)
+        year = date.substring(0, 4)
+        monthNumerical = date.substring(5, 7).toInt()
+        day = date.substring(8, 10)
 
-        val month = formattedDate.format(DateTimeFormatter.ofPattern("MMM"))
-        val day = formattedDate.format(DateTimeFormatter.ofPattern("dd"))
-        val year = formattedDate.format(DateTimeFormatter.ofPattern("yyyy"))
+        // Subtract 1 since Jan is at index 0
+        val month = DateFormatSymbols().shortMonths[monthNumerical - 1]
         return "$month $day, $year"
-    } catch (e: DateTimeParseException) {
-        e.message?.let { Log.e("Format exception", it) }
+    } catch (e: NumberFormatException) {
+        Log.e("NumberFormatExc", e.message.toString())
     }
-    return date
+    return "$monthNumerical $day, $year"
 }
