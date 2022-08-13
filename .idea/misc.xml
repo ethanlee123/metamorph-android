@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.41041666666666665" />
         <entry key="app/src/main/res/layout/fragment_order_details_bottom_sheet.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.41041666666666665" />
-        <entry key="app/src/main/res/layout/job_info_row_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/job_info_row_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/loading.xml" value="0.2231508566652737" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.41041666666666665" />
       </map>

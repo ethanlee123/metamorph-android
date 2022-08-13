@@ -1,17 +1,22 @@
 package com.example.metamorph.ui.orderdetails
 
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.ViewModelProvider
 import com.example.metamorph.R
 import com.example.metamorph.databinding.FragmentOrderDetailsBottomSheetBinding
 import com.example.metamorph.model.OrderDetailsByIdParams
 import com.example.metamorph.model.OrderDetailsByIdResponse
-import com.example.metamorph.ui.orderdetails.viewmodel.OrderDetailsViewModelFactory
 import com.example.metamorph.ui.orderdetails.repository.OrderDetailsRepository
 import com.example.metamorph.ui.orderdetails.viewmodel.OrderDetailsViewModel
+import com.example.metamorph.ui.orderdetails.viewmodel.OrderDetailsViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
@@ -46,9 +51,39 @@ class OrderDetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
         orderDetailsViewModel.orderDetails.observe(this) {
             setupTextViews(it)
+            setupDownloadDocsButton(it.ReferenceDownloadURL, it.ReferenceFileName, it.OrderNo)
         }
 
         return root
+    }
+
+    private fun setupDownloadDocsButton(
+        referenceDownloadURL: String,
+        fileName: String?,
+        orderNo: String
+    ) {
+        val downloadDocButton = binding.bReferenceDownloadUrl
+        if (referenceDownloadURL.isNullOrBlank()) {
+            downloadDocButton.text = resources.getString(R.string.no_docs_available)
+            return
+        }
+        val finalFileName =
+            if (fileName.isNullOrBlank()) orderNo
+            else fileName
+
+        downloadDocButton.setOnClickListener {
+            val request = DownloadManager.Request(Uri.parse(referenceDownloadURL))
+                .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
+                .setTitle(finalFileName)
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setAllowedOverMetered(true)
+                .setAllowedOverRoaming(false)
+            val downloadManager =
+                requireContext().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+            downloadManager.enqueue(request)
+        }
+        // Button is disabled by default in xml
+        downloadDocButton.isEnabled = true
     }
 
     private fun setupToolbar() {

@@ -67,5 +67,7 @@
     <string name="web_order_title">Web order title</string>
     <string name="sentence_style">Sentence style</string>
     <string name="translation_method">Translation method</string>
+    <string name="reference_download_url">Reference download url</string>
+    <string name="no_docs_available">No docs available</string>
 </resources>
 

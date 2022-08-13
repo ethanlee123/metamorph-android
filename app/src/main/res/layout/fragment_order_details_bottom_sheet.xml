@@ -322,7 +322,6 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/translation_method"/>
 
-
             <TextView
                 android:id="@+id/tv_comment_to_translator"
                 android:layout_width="wrap_content"
@@ -342,6 +341,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/menu_script"/>
+
+            <Button
+                android:id="@+id/b_reference_download_url"
+                style=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="Download docs"/>
 
         </LinearLayout>
 
