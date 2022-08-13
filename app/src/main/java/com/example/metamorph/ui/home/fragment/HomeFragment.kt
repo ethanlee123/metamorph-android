@@ -19,12 +19,14 @@ import com.example.metamorph.ui.home.viewmodel.HomeViewModel
 import com.example.metamorph.ui.home.viewmodel.HomeViewModelFactory
 import com.example.metamorph.ui.orderdetails.OrderDetailsBottomSheetFragment
 
-class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
-    // Number of web orders to query
-    private val DEFAULT_PAGE_SIZE = "10"
-    private var _binding: FragmentHomeBinding? = null
 
+class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
+    // Number of web orders to query by default
+    private val DEFAULT_PAGE_SIZE = "10"
+
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
     private val repository = HomeRepository()
     private lateinit var homeViewModel: HomeViewModel
     private val linearLayoutManager = LinearLayoutManager(context)
@@ -77,6 +79,10 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
         rvJobs.adapter = adapter
     }
 
+    /**
+     * Currently the way it gets the quantity of new web orders is by adding 10 to the current
+     * amount of web orders. This makes is slower. We want to retrieve only the new web orders.
+     */
     private fun setupRecyclerViewScrollListener() {
         binding.rvJobs.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -85,21 +91,16 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
                     if (linearLayoutManager.findLastCompletelyVisibleItemPosition()
                         == homeViewModel.webOrderResponse.value?.size?.minus(1)
                             ) {
-                        // add progress bar, the loading footer
-//                        binding.rvJobs.post {
-//                            adapter.addFooter()
-//                        }
+
+                        binding.progressbar.visibility = View.VISIBLE
                         // load more items after 2 seconds, and remove the loading footer
                         Handler(Looper.getMainLooper()).postDelayed({
                             val webOrderParams = WebOrderParams(
                                 pageSize = homeViewModel.webOrderResponse.value?.size?.plus(10).toString()
                             )
                             homeViewModel.getWebOrders(webOrderParams)
-//                            for (i in itemList.size..itemList.size + 19) {
-//                                newItems.add(Item("Item " + i))
-//                            }
-//                            adapter.updateList(newItems)
-//                            adapter.removeFooter()
+
+                            binding.progressbar.visibility = View.INVISIBLE
                         }, 3000)
                     }
                 }
