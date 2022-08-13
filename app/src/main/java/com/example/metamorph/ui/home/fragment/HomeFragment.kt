@@ -1,6 +1,8 @@
 package com.example.metamorph.ui.home.fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,12 +21,13 @@ import com.example.metamorph.ui.orderdetails.OrderDetailsBottomSheetFragment
 
 class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
     // Number of web orders to query
-    private val DEFAULT_PAGE_SIZE = "15"
+    private val DEFAULT_PAGE_SIZE = "10"
     private var _binding: FragmentHomeBinding? = null
 
     private val binding get() = _binding!!
     private val repository = HomeRepository()
     private lateinit var homeViewModel: HomeViewModel
+    private val linearLayoutManager = LinearLayoutManager(context)
 
     lateinit var adapter: JobsAdapter
 
@@ -47,9 +50,9 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val rvJobs = binding.rvJobs
-        setupRecyclerViewJobs(rvJobs)
+        setupRecyclerViewJobs()
         setupRecyclerViewAdapter(listOf())
+        setupRecyclerViewScrollListener()
 
         homeViewModel.webOrderResponse.observe(viewLifecycleOwner) { response ->
             adapter.updateList(response)
@@ -63,13 +66,45 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
         _binding = null
     }
 
-    private fun setupRecyclerViewJobs(recyclerView: RecyclerView) {
-        recyclerView.layoutManager = LinearLayoutManager(context)
+    private fun setupRecyclerViewJobs() {
+        val rvJobs = binding.rvJobs
+        rvJobs.layoutManager = linearLayoutManager
     }
+
     private fun setupRecyclerViewAdapter(webOrderData: List<WebOrderResponse>) {
         val rvJobs = binding.rvJobs
         adapter = JobsAdapter(webOrderData, this)
         rvJobs.adapter = adapter
+    }
+
+    private fun setupRecyclerViewScrollListener() {
+        binding.rvJobs.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!adapter.isLoading()) {
+                    if (linearLayoutManager.findLastCompletelyVisibleItemPosition()
+                        == homeViewModel.webOrderResponse.value?.size?.minus(1)
+                            ) {
+                        // add progress bar, the loading footer
+//                        binding.rvJobs.post {
+//                            adapter.addFooter()
+//                        }
+                        // load more items after 2 seconds, and remove the loading footer
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            val webOrderParams = WebOrderParams(
+                                pageSize = homeViewModel.webOrderResponse.value?.size?.plus(10).toString()
+                            )
+                            homeViewModel.getWebOrders(webOrderParams)
+//                            for (i in itemList.size..itemList.size + 19) {
+//                                newItems.add(Item("Item " + i))
+//                            }
+//                            adapter.updateList(newItems)
+//                            adapter.removeFooter()
+                        }, 3000)
+                    }
+                }
+            }
+        })
     }
 
     override fun setOnClickListener(orderNo: String) {

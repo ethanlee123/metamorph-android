@@ -56,4 +56,6 @@ data class WebOrderResponse(
     var TranslatorNo: Long,
     var WebOrderTitle: String,
     var WordCount: Int,
-)
+) {
+    val type: Int = 0
+}
