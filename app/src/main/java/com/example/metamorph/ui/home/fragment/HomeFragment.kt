@@ -101,7 +101,7 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
                             homeViewModel.getWebOrders(webOrderParams)
 
                             binding.progressbar.visibility = View.INVISIBLE
-                        }, 3000)
+                        }, 1000)
                     }
                 }
             }
