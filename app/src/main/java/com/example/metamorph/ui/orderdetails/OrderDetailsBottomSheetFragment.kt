@@ -59,38 +59,66 @@ class OrderDetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun setupTextViews(data: OrderDetailsByIdResponse) {
 //        Order details
-        binding.tvOrderId.text = concatString(R.string.order_id, data.OrderId)
         binding.tvOrderNo.text = concatString(R.string.order_no, data.OrderNo)
-        binding.tvOrderDate.text = concatString(R.string.order_date, data.OrderDate)
-        binding.tvOrderStatus.text = concatString(R.string.order_status, data.OrderStatusName)
+        binding.tvOrderStatus.text = concatString(R.string.order_status, data.OrderStatus)
+        binding.tvClientNo.text = concatString(R.string.client_no, data.ClientNo)
 
-//        Translation details
+        binding.tvAssignedTranslatorId.text = concatString(R.string.assigned_translator_id, data.AssignedTranslatorID)
+        binding.tvDeliveryPlanId.text = concatString(R.string.delivery_plan_id, data.DeliveryPlanID)
+        binding.tvDeliveryPlan.text = concatString(R.string.delivery_plan, data.DeliveryPlan)
+        binding.tvDeliveryType.text = concatString(R.string.delivery_type, data.DeliveryType)
+        binding.tvDeliveryTime.text = concatString(R.string.delivery_time, data.DeliveryTime)
+        binding.tvDeliveryLevelName.text = concatString(R.string.delivery_level, data.DeliveryLevelName)
+        binding.tvCurrencySymbol.text = concatString(R.string.currency_symbol, data.CurrencySymbol)
+
+        binding.tvOrderDate.text = concatString(R.string.order_date, data.OrderDate)
+        binding.tvStartDate.text = concatString(R.string.start_date, data.StartDate)
+        binding.tvEndDate.text = concatString(R.string.end_date, data.EndDate)
+        binding.tvDeliveryDate.text = concatString(R.string.delivery_date, data.DeliveryDate)
+
+        binding.tvWordCount.text = concatString(R.string.words, data.WordCount)
+        binding.tvCountType.text = concatString(R.string.count_type, data.CountType)
+        binding.tvCharacterCount.text = concatString(R.string.characters, data.CharacterCount)
+        binding.tvPaymentAmount.text = concatString(R.string.payment_amount, data.PaymentAmount)
+        binding.tvTranslatorFee.text = concatString(R.string.translator_fee, data.TranslatorFee)
+        binding.tvEstimatedPrice.text = concatString(R.string.estimated_price, data.EstimatedPrice)
+
+        binding.tvUnitPrice.text = concatString(R.string.unit_price, data.UnitPrice)
+        binding.tvDiscount.text = concatString(R.string.discount, data.Discount)
+        binding.tvPriceAfterDiscount.text = concatString(R.string.discounted_price, data.PriceAfterDiscount)
+        binding.tvConsumptionTax.text = concatString(R.string.consumption_tax, data.ConsumptionTax)
+        binding.tvEvaluationScore.text = concatString(R.string.evaluation_score, data.EvaluationScore)
+        binding.tvEvaluationComment.text = concatString(R.string.evaluation_comment, data.EvaluationComment)
+        binding.tvCountFavouriteTranslator.text = concatString(R.string.count_favourite_translator, data.CountFavouriteTranslator)
+        binding.tvCountBlackTranslator.text = concatString(R.string.count_black_translator, data.CountBlackTranslator)
+
         binding.tvTranslatorName.text = concatString(R.string.translator_name, data.TranslatorName)
-        binding.tvTranslationFieldName.text =
-            concatString(R.string.translation_field_name, data.TranslationFieldName)
-        binding.tvTranslatorNo.text =
-            concatString(R.string.translator_no, data.TranslatorNo.toString())
+        binding.tvTranslationFieldName.text = concatString(R.string.translation_field_name, data.TranslationFieldName)
+        binding.tvTranslatorNo.text = concatString(R.string.translator_no, data.TranslatorNo)
         binding.tvSourceLang.text = concatString(R.string.source_language, data.SourceLanguage)
         binding.tvTargetLang.text = concatString(R.string.target_language, data.TargetLanguage)
 
+        binding.tvAppointedToStaffList.text = concatString(R.string.appointed_to_staff_list, data.AppointedToStaffList)
+        binding.tvMessageList.text = concatString(R.string.message_list, data.MessageList)
+        binding.tvAvgScore.text = concatString(R.string.avg_score, data.AvgScore)
+
+        binding.tvNumberOfWorks.text = concatString(R.string.number_of_works, data.NumberOfWorks)
+        binding.tvCustomerEvaluationPoint.text = concatString(R.string.customer_evaluation_point, data.CustomerEvaluationPoint)
+        binding.tvPenaltyPoint.text = concatString(R.string.penalty_point, data.PenaltyPoint)
+
+        binding.tvWebOrderTitle.text = concatString(R.string.web_order_title, data.WebOrderTitle)
+        binding.tvSentenceStyle.text = concatString(R.string.sentence_style, data.SentenceStyle)
+        binding.tvTranslationMethod.text = concatString(R.string.translation_method, data.TranslationMethod)
+
 //        Comments/menuscript
-        binding.tvComments.text =
+        binding.tvCommentToTranslator.text =
             concatString(R.string.comment_to_translator, data.CommentToTranslator)
-        binding.tvMenuScript.text = concatString(R.string.menu_script, data.MenuScript)
         binding.tvDeliveryComment.text =
             concatString(R.string.delivery_comment, data.DeliveryComment)
-
         binding.tvMenuScript.text = concatString(R.string.menu_script, data.MenuScript)
-
-//        payment details
-        binding.tvPaymentDate.text = concatString(R.string.payment_date, data.PaymentDate)
-        binding.tvPaymentAmount.text =
-            concatString(R.string.payment_amount, data.PaymentAmount.toString())
-        binding.tvTranslatorFee.text =
-            concatString(R.string.translator_fee, data.TranslatorFee.toString())
     }
 
-    private fun concatString(stringId: Int, secondString: String): String {
+    private fun concatString(stringId: Int, secondString: Any): String {
         return "${resources.getString(stringId)}: $secondString"
     }
 

@@ -8,8 +8,8 @@
     <string name="title_order_details">Order details</string>
 
     <string name="translation_details">Translation details</string>
-    <string name="translator_name">name</string>
-    <string name="translator_no">No</string>
+    <string name="translator_name">Translator name</string>
+    <string name="translator_no">Translator No</string>
     <string name="source_language">Source Lang</string>
     <string name="target_language">Target Lan</string>
     <string name="translation_field_name">Field_name</string>
@@ -18,7 +18,8 @@
     <string name="delivery_comment">Delivery comment</string>
 
     <string name="order_id">OrderID</string>
-    <string name="order_no">Order no</string>
+    <string name="order_no">Order #</string>
+    <string name="client_no">Client #</string>
     <string name="order_date">Order date</string>
     <string name="order_status">Order status</string>
 
@@ -26,7 +27,8 @@
     <string name="start_date">Start date</string>
     <string name="end_date">End date</string>
     <string name="payment_date">Payment date</string>
-    <string name="delivery_level">Delivery level</string>
+    <string name="delivery_level">Delivery level name</string>
+    <string name="delivery_plan_id">Delivery plan ID</string>
     <string name="delivery_plan">Delivery plan</string>
 
     <string name="payment_and_fees">Payment and fees</string>
@@ -35,7 +37,7 @@
     <string name="translator_fee">Translator fee</string>
     <string name="estimated_price">Estimated price</string>
     <string name="unit_price">Unit price</string>
-    <string name="discounted_price">Discounted price</string>
+    <string name="discount">Discount</string>
     <string name="consumption_tax">Consumption tax</string>
 
     <string name="more_info">More information</string>
@@ -46,5 +48,24 @@
     <string name="yen_symbol">&#165;</string>
     <string name="paid">&#165;%s</string>
     <string name="earn">&#165;%s</string>
+    <string name="count_type">Count type</string>
+    <string name="currency_symbol">Currency</string>
+    <string name="delivery_time">Delivery time</string>
+    <string name="delivery_type">Delivery type</string>
+    <string name="assigned_translator_id">Assigned Translator ID</string>
+    <string name="discounted_price">Discounted price</string>
+    <string name="evaluation_score">Evaluation score</string>
+    <string name="evaluation_comment">Evaluation comment</string>
+    <string name="count_favourite_translator">Count favourite translator</string>
+    <string name="count_black_translator">Count black translator</string>
+    <string name="appointed_to_staff_list">Appointed staff list</string>
+    <string name="message_list">Message list</string>
+    <string name="avg_score">Avg score</string>
+    <string name="number_of_works">Number of works</string>
+    <string name="customer_evaluation_point">Customer eval point</string>
+    <string name="penalty_point">Penalty point</string>
+    <string name="web_order_title">Web order title</string>
+    <string name="sentence_style">Sentence style</string>
+    <string name="translation_method">Translation method</string>
 </resources>
 

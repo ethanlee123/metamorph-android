@@ -35,23 +35,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_order_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/order_id"/>
-            <TextView
                 android:id="@+id/tv_order_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/order_no"/>
-            <TextView
-                android:id="@+id/tv_order_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/order_date"/>
+
             <TextView
                 android:id="@+id/tv_order_status"
                 android:layout_width="wrap_content"
@@ -59,19 +48,193 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/order_status"/>
 
-<!--            TRANSLATION DETAILS-->
             <TextView
-                android:id="@+id/tv_translation_details"
+                android:id="@+id/tv_client_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/client_no"/>
+
+            <TextView
+                android:id="@+id/tv_assigned_translator_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:textStyle="bold"
-                android:text="@string/translation_details"/>
+                android:text="@string/assigned_translator_id"/>
+
+            <TextView
+                android:id="@+id/tv_delivery_plan_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/delivery_plan_id"/>
+
+            <TextView
+                android:id="@+id/tv_delivery_plan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/delivery_plan"/>
+
+            <TextView
+                android:id="@+id/tv_delivery_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/delivery_type"/>
+
+            <TextView
+                android:id="@+id/tv_delivery_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/delivery_time"/>
+
+            <TextView
+                android:id="@+id/tv_delivery_level_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/delivery_level"/>
+
+            <TextView
+                android:id="@+id/tv_currency_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/currency_symbol"/>
+
+            <TextView
+                android:id="@+id/tv_order_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/order_date"/>
+
+            <TextView
+                android:id="@+id/tv_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/start_date"/>
+
+            <TextView
+                android:id="@+id/tv_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/end_date"/>
+
+            <TextView
+                android:id="@+id/tv_delivery_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/delivery_date"/>
+
+            <TextView
+                android:id="@+id/tv_word_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/words"/>
+            <TextView
+                android:id="@+id/tv_count_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/count_type"/>
+            <TextView
+                android:id="@+id/tv_character_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/characters"/>
+            <TextView
+                android:id="@+id/tv_payment_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/payment_amount"/>
+            <TextView
+                android:id="@+id/tv_translator_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/translator_fee"/>
+            <TextView
+                android:id="@+id/tv_estimated_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/estimated_price"/>
+
+            <TextView
+                android:id="@+id/tv_unit_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/unit_price"/>
+            <TextView
+                android:id="@+id/tv_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/discount"/>
+            <TextView
+                android:id="@+id/tv_price_after_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/discounted_price"/>
+            <TextView
+                android:id="@+id/tv_consumption_tax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/consumption_tax"/>
+            <TextView
+                android:id="@+id/tv_evaluation_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/evaluation_score"/>
+            <TextView
+                android:id="@+id/tv_evaluation_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/evaluation_comment"/>
+            <TextView
+                android:id="@+id/tv_count_favourite_translator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/count_favourite_translator"/>
+            <TextView
+                android:id="@+id/tv_count_black_translator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/count_black_translator"/>
+            <!--            TRANSLATION DETAILS-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv_translation_details"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="@string/translation_details"/>-->
             <TextView
                 android:id="@+id/tv_translator_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/translator_name"/>
             <TextView
@@ -98,52 +261,88 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/target_language"/>
+
             <TextView
-                android:id="@+id/tv_comments"
+                android:id="@+id/tv_appointed_to_staff_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/appointed_to_staff_list"/>
+            <TextView
+                android:id="@+id/tv_message_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/message_list"/>
+            <TextView
+                android:id="@+id/tv_avg_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/avg_score"/>
+
+            <TextView
+                android:id="@+id/tv_number_of_works"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/number_of_works"/>
+            <TextView
+                android:id="@+id/tv_customer_evaluation_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/customer_evaluation_point"/>
+            <TextView
+                android:id="@+id/tv_penalty_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/penalty_point"/>
+            <TextView
+                android:id="@+id/tv_web_order_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/web_order_title"/>
+            <TextView
+                android:id="@+id/tv_sentence_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/sentence_style"/>
+            <TextView
+                android:id="@+id/tv_translation_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/translation_method"/>
+
+
+            <TextView
+                android:id="@+id/tv_comment_to_translator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/comment_to_translator"/>
-            <TextView
-                android:id="@+id/tv_menu_script"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/menu_script"/>
             <TextView
                 android:id="@+id/tv_delivery_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/delivery_comment"/>
+            <TextView
+                android:id="@+id/tv_menu_script"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/menu_script"/>
 
-<!--            PAYMENT DETAILS-->
-            <TextView
-                android:id="@+id/tv_payment_and_fees"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:textStyle="bold"
-                android:text="@string/payment_and_fees"/>
-            <TextView
-                android:id="@+id/tv_payment_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/payment_date"/>
-            <TextView
-                android:id="@+id/tv_payment_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/payment_amount"/>
-            <TextView
-                android:id="@+id/tv_translator_fee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/translator_fee"/>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
