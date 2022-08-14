@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "995938481983",
+    "project_id": "metamorph-2f9b7",
+    "storage_bucket": "metamorph-2f9b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995938481983:android:088931ede3cadb57ec458a",
+        "android_client_info": {
+          "package_name": "com.verdant.metamorph"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "995938481983-04nrh2cvfuivt7sshb1f59r4l05kn0hs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verdant.metamorph",
+            "certificate_hash": "e5c969a952d7ac1ca7aa4f829c46bdc9e882100e"
+          }
+        },
+        {
+          "client_id": "995938481983-bj1dj7ioi5ue0mdorfe2rhsfsko17h8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoFxLtCxI6lvNT-7NRrNB8uRWW8Z2ynFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "995938481983-bj1dj7ioi5ue0mdorfe2rhsfsko17h8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
