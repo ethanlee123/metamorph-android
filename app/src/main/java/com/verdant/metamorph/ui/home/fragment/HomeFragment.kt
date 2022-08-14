@@ -29,7 +29,6 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
 
     private val repository = HomeRepository()
     private lateinit var homeViewModel: HomeViewModel
-    private val linearLayoutManager = LinearLayoutManager(context)
 
     lateinit var adapter: JobsAdapter
 
@@ -70,7 +69,7 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
 
     private fun setupRecyclerViewJobs() {
         val rvJobs = binding.rvJobs
-        rvJobs.layoutManager = linearLayoutManager
+        rvJobs.layoutManager = LinearLayoutManager(context)
     }
 
     private fun setupRecyclerViewAdapter(webOrderData: List<WebOrderResponse>) {
@@ -88,7 +87,8 @@ class HomeFragment : Fragment(), JobsAdapter.IJobRowItemOnClick {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!adapter.isLoading()) {
-                    if (linearLayoutManager.findLastCompletelyVisibleItemPosition()
+                    val rvJobsLayoutManager = binding.rvJobs.layoutManager as LinearLayoutManager
+                    if (rvJobsLayoutManager.findLastCompletelyVisibleItemPosition()
                         == homeViewModel.webOrderResponse.value?.size?.minus(1)
                             ) {
 
