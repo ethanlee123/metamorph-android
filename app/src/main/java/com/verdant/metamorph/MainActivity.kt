@@ -1,7 +1,6 @@
 package com.verdant.metamorph
 
 import android.os.Bundle
-import android.view.Menu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -15,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    lateinit var notificationService: NotificationService
+    private lateinit var notificationService: NotificationService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +35,20 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_profile
             )
         )
+
+        setupToolbar()
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         initNotificationService()
     }
 
+    /**
+     * Hiding toolbar (aka action bar) in xml but we still need it for bottom nav view.
+     */
+    private fun setupToolbar() {
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+    }
     private fun initNotificationService() {
         notificationService = NotificationService()
         notificationService.subscribeToNewWebOrderTopic()
