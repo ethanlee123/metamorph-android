@@ -32,18 +32,8 @@ class ProfileFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
+        textView.text = "Coming soon!"
 
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                return@OnCompleteListener
-            }
-
-            // Get new FCM registration token
-            val token = task.result
-            textView.text = token
-            Log.d(TAG, "Device Token: $token")
-        })
         return root
     }
 
