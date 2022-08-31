@@ -8,10 +8,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.verdant.metamorph.databinding.ActivityMainBinding
+import com.verdant.metamorph.services.notificationservice.NotificationService
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    lateinit var notificationService: NotificationService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,5 +37,12 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        initNotificationService()
+    }
+
+    private fun initNotificationService() {
+        notificationService = NotificationService()
+        notificationService.subscribeToNewWebOrderTopic()
     }
 }
