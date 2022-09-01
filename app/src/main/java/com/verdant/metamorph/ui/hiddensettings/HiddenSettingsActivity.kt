@@ -4,20 +4,29 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.verdant.metamorph.R
 import com.verdant.metamorph.databinding.ActivityHiddenSettingsBinding
 
-class HiddenSettingsActivity: AppCompatActivity() {
+class HiddenSettingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHiddenSettingsBinding
+    lateinit var hiddenSettingsViewModel: HiddenSettingsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHiddenSettingsBinding.inflate(layoutInflater)
 
-        setContentView(R.layout.activity_hidden_settings)
-
+        setContentView(binding.root)
+        hiddenSettingsViewModel = ViewModelProvider(this)[HiddenSettingsViewModel::class.java]
         setupToolbar()
+        setupDeviceTokenTextView()
+    }
+
+    private fun setupDeviceTokenTextView() {
+        hiddenSettingsViewModel.deviceTokenText.observe(this) {
+            binding.tvDeviceToken.text = it
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -32,6 +41,8 @@ class HiddenSettingsActivity: AppCompatActivity() {
     }
 
     companion object {
+        const val TAG = "HiddenSettingsActivity"
+
         fun getIntent(context: Context): Intent {
             return Intent(context, HiddenSettingsActivity::class.java)
         }
