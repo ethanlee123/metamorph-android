@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/job_info_row_item_background.xml" value="0.2755" />
+        <entry key="app/src/main/res/layout/activity_hidden_settings.xml" value="0.4029918404351768" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_inbox.xml" value="0.2660924750679964" />
