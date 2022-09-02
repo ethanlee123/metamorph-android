@@ -1,4 +1,4 @@
-package com.verdant.metamorph.ui.home.network
+package com.verdant.metamorph.network
 
 import com.verdant.metamorph.model.OrderDetailsByIdParams
 import com.verdant.metamorph.model.OrderDetailsByIdResponse

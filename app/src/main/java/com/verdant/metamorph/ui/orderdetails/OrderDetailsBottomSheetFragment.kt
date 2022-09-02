@@ -24,7 +24,7 @@ class OrderDetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
     private val orderDetailsRepository = OrderDetailsRepository()
 
-    lateinit var orderDetailsViewModel: OrderDetailsViewModel
+    private lateinit var orderDetailsViewModel: OrderDetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +56,7 @@ class OrderDetailsBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun setupDownloadDocsButton(
-        referenceDownloadURL: String,
+        referenceDownloadURL: String?,
         fileName: String?,
         orderNo: String
     ) {

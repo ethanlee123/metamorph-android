@@ -1,12 +1,16 @@
-package com.verdant.metamorph.ui.home.network
+package com.verdant.metamorph.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Refactor this to query metamorph's api
+ */
+@Deprecated(message = "Migrate to metamorph's api")
 object RetrofitInstance {
-    val BASE_URL = "https://bcause-api.com/"
+    private const val BASE_URL = "https://bcause-api.com/"
     val moshi: Moshi = Moshi
         .Builder()
         .add(KotlinJsonAdapterFactory())

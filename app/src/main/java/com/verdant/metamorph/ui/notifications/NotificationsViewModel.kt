@@ -3,21 +3,20 @@ package com.verdant.metamorph.ui.notifications
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.verdant.metamorph.ui.home.repository.HomeRepository
+import androidx.lifecycle.viewModelScope
+import com.verdant.metamorph.model.NotificationRowResponse
 import com.verdant.metamorph.ui.notifications.repository.NotificationsRepository
+import kotlinx.coroutines.launch
 
 class NotificationsViewModel(private val repository: NotificationsRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
-
-    private val _notificationRows = MutableLiveData<List<String>>()
-    val notificationRows: LiveData<List<String>> = _notificationRows
+    private val _notificationRows = MutableLiveData<List<NotificationRowResponse>>()
+    val notificationRows: LiveData<List<NotificationRowResponse>> = _notificationRows
 
     fun fetchPushNotifications() {
-        repository.fetchPushNotifications()
+        viewModelScope.launch {
+            val response = repository.fetchPushNotifications()
+            _notificationRows.value = response.body()
+        }
     }
-
 }

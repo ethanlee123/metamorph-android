@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.verdant.metamorph.databinding.FragmentNotificationsBinding
+import com.verdant.metamorph.model.NotificationRowResponse
 import com.verdant.metamorph.ui.notifications.viewmodel.NotificationsViewModelFactory
 import com.verdant.metamorph.ui.notifications.adapter.NotificationRowAdapter
 import com.verdant.metamorph.ui.notifications.repository.NotificationsRepository
@@ -33,12 +34,10 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        setupRecyclerViewJobs()
-//        setupRecyclerViewAdapter(listOf())
+        notificationsViewModel.fetchPushNotifications()
+        setupRecyclerViewJobs()
 
-//        notificationsViewModel.notificationRows.observe(viewLifecycleOwner) { response ->
-//            adapter.updateList(response)
-//        }
+        setupObservers()
 
         return root
     }
@@ -53,23 +52,18 @@ class NotificationsFragment : Fragment() {
         rvJobs.layoutManager = LinearLayoutManager(context)
     }
 
-//    private fun setupRecyclerViewAdapter(webOrderData: List<WebOrderResponse>) {
-//        val rvJobs = binding.rvJobs
-//        adapter = NotificationRowAdapter(webOrderData, this)
-//        rvJobs.adapter = adapter
-//    }
+    private fun setupObservers() {
+        notificationsViewModel.notificationRows.observe(viewLifecycleOwner) { response ->
+            setupRecyclerViewAdapter(response)
 
+            // Hide progress bar after fetching data from DB
+            binding.progressbar.visibility = View.GONE
+        }
+    }
 
-//    override fun setOnClickListener(orderNo: String) {
-//        val bottomSheet = OrderDetailsBottomSheetFragment().apply {
-//            val bundle = Bundle()
-//            bundle.putString(OrderDetailsBottomSheetFragment.ARG_ORDER_NO, orderNo)
-//            arguments = bundle
-//        }
-//
-//        bottomSheet.show(
-//            requireActivity().supportFragmentManager,
-//            OrderDetailsBottomSheetFragment.TAG
-//        )
-//    }
+    private fun setupRecyclerViewAdapter(pushNotifications: List<NotificationRowResponse>) {
+        val rvJobs = binding.rvJobs
+        adapter = NotificationRowAdapter(pushNotifications)
+        rvJobs.adapter = adapter
+    }
 }
