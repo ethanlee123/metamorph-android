@@ -10,6 +10,9 @@
 
     <string name="title_order_details">Order details</string>
 
+    <string name="no_notifications">There aren\'t any notifications for you yet.</string>
+    <string name="person_thinking">Person thinking</string>
+
     <string name="translation_details">Translation details</string>
     <string name="translator_name">Translator name</string>
     <string name="translator_no">Translator No</string>

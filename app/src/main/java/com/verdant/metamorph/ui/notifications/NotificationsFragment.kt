@@ -53,8 +53,13 @@ class NotificationsFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        notificationsViewModel.notificationRows.observe(viewLifecycleOwner) { response ->
-            setupRecyclerViewAdapter(response)
+        notificationsViewModel.notificationRows.observe(viewLifecycleOwner) { notificationDataSet ->
+            if (notificationDataSet.isEmpty()) {
+                binding.llNoNotifications.visibility = View.VISIBLE
+            } else {
+                binding.llNoNotifications.visibility = View.GONE
+                setupRecyclerViewAdapter(notificationDataSet)
+            }
 
             // Hide progress bar after fetching data from DB
             binding.progressbar.visibility = View.GONE
