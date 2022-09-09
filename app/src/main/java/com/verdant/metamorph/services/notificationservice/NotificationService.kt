@@ -45,7 +45,7 @@ class NotificationService: FirebaseMessagingService() {
     }
 
     fun subscribeToNewWebOrderTopic() {
-        Firebase.messaging.subscribeToTopic("weather")
+        Firebase.messaging.subscribeToTopic(TOPIC_NEW_WEB_ORDERS)
             .addOnCompleteListener { task ->
                 var msg = "Subscribed"
                 if (!task.isSuccessful) {
@@ -57,5 +57,6 @@ class NotificationService: FirebaseMessagingService() {
 
     companion object {
         const val TAG = "Notification service"
+        const val TOPIC_NEW_WEB_ORDERS = "weather"
     }
 }
