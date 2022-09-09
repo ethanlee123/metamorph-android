@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Secret keys
+app/src/main/cpp/native-lib.cpp

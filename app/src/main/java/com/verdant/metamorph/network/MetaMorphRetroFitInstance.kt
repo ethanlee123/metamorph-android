@@ -4,11 +4,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object MetaMorphRetroFitInstance {
-    private const val BASE_URL = "http://10.0.2.2:3000/"
+
+    init {
+        System.loadLibrary("native-lib")
+    }
+
+    external fun mmApiKey(): String
 
     private val retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(mmApiKey())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
