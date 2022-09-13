@@ -7,16 +7,29 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.verdant.metamorph.R
 import com.verdant.metamorph.model.NotificationRowResponse
+import com.verdant.metamorph.util.formatDateTime
 
 class NotificationRowAdapter(
-    private val notificationsDataSet: List<NotificationRowResponse>
+    private var notificationsDataSet: List<NotificationRowResponse>
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class NotificationRowViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val orderNo: TextView
+        val order: TextView
+        val deliveryDate: TextView
+        val translatorFee: TextView
+        val translatorPay: TextView
+        val orderStatusName: TextView
+        val from: TextView
+        val deliveryPlan: TextView
 
         init {
-            orderNo = view.findViewById(R.id.tv_orderNo)
+            order = view.findViewById(R.id.tv_order)
+            deliveryDate = view.findViewById(R.id.tv_delivery_date)
+            deliveryPlan = view.findViewById(R.id.tv_time)
+            translatorFee = view.findViewById(R.id.tv_translator_fee)
+            translatorPay = view.findViewById(R.id.tv_translator_pay)
+            orderStatusName = view.findViewById(R.id.tv_order_status)
+            from = view.findViewById(R.id.tv_from)
         }
     }
 
@@ -30,8 +43,23 @@ class NotificationRowAdapter(
         val notificationRowViewHolder = holder as NotificationRowViewHolder
         val resources = notificationRowViewHolder.itemView.resources
         val notificationRowItem = notificationsDataSet[position]
-        notificationRowViewHolder.orderNo.text = notificationRowItem.orderNo
+        val deliveryDateFormatted = notificationRowItem.deliveryDate?.let { formatDateTime(it) }
+
+        notificationRowViewHolder.order.text = notificationRowItem.orderNo
+        notificationRowViewHolder.deliveryDate.text = deliveryDateFormatted
+        notificationRowViewHolder.deliveryPlan.text = notificationRowItem.deliveryPlan
+        notificationRowViewHolder.translatorPay.text = resources.getString(R.string.paid, notificationRowItem.translatorPay.toString())
+        notificationRowViewHolder.translatorFee.text = resources.getString(R.string.paid, notificationRowItem.translatorFee.toString())
+        notificationRowViewHolder.orderStatusName.text = notificationRowItem.orderStatusName
+        notificationRowViewHolder.from.text = notificationRowItem.webOrderTitle
     }
 
     override fun getItemCount() = notificationsDataSet.size
+
+    fun updateList(response: List<NotificationRowResponse>?) {
+        if (response != null) {
+            notificationsDataSet = response
+        }
+        notifyDataSetChanged()
+    }
 }

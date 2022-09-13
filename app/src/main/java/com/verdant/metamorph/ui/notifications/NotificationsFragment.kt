@@ -34,9 +34,11 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        notificationsViewModel.fetchPushNotifications()
+        // Must setup recycler view on main thread or you'll get no adapter attached error
         setupRecyclerViewJobs()
+        setupRecyclerViewAdapter(listOf())
 
+        notificationsViewModel.fetchPushNotifications()
         setupObservers()
 
         return root
@@ -58,7 +60,7 @@ class NotificationsFragment : Fragment() {
                 binding.llNoNotifications.visibility = View.VISIBLE
             } else {
                 binding.llNoNotifications.visibility = View.GONE
-                setupRecyclerViewAdapter(notificationDataSet)
+                adapter.updateList(notificationDataSet)
             }
 
             // Hide progress bar after fetching data from DB

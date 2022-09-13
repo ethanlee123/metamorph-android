@@ -1,17 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/job_info_row_item_background">
 
-    <TextView
-        android:id="@+id/tv_orderNo"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mid_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <!--    Titles-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_delivery_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="123123"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Jul 20, 2022 - 12:06"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_delivery_plan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_date"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paid:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_delivery_plan"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_earn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Earn:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_paid"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="@id/mid_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_date"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="@id/mid_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_status"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order:"
+        android:paddingEnd="@dimen/column_end_padding"
+        app:layout_constraintStart_toStartOf="@id/mid_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_from"/>
+
+    <!--    Values-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_delivery_plan"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_date"
+        tools:text="delivery plan"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_translator_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_paid"
+        app:layout_constraintTop_toBottomOf="@id/tv_time"
+        tools:text="paid value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_translator_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_earn"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_paid"
+        tools:text="earn value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_status"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_date"
+        app:layout_constraintBottom_toTopOf="@id/tv_from"
+        tools:text="status value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_from"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_status"
+        tools:text="from value"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_title_order"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_from"
+        tools:text="order value"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
